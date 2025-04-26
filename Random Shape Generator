@@ -1,0 +1,45 @@
+import turtle
+import random
+
+screen = turtle.Screen()
+screen.bgcolor("Black")
+screen.title("Random Shape Drawer")
+
+artist = turtle.Turtle()
+artist.speed(0)
+colors = ["pink", "blue", "red", "green", "purple", "yellow", "orange"]
+shapes = ["circle","square", "triangle"]
+
+def draw_random_shape():
+    artist.penup()
+    x = random.randint(-300, 300)
+    y= random.randint(-300, 300)
+    artist.goto(x,y)
+    artist.pendown()
+
+    color = random.choice(colors)
+    shape = random.choice (shapes)
+    size = random.randint (20,100)
+    
+    artist.color(color)
+
+    if shape == "circle":
+        artist.begin_fill()
+        artist.circle(size)
+        artist.end_fill()
+    elif shape == "square":
+        artist.begin_fill()
+        for _ in range (4):
+            artist.forward(size)
+            artist.right(90)
+        artist.end_fill()
+    elif shape == "triangle":
+        artist.begin_fill()
+        for _ in range(3):
+            artist.forward(size)
+            artist.left(120)
+        artist.end_fill()
+for _ in range(30):
+    draw_random_shape()
+
+turtle.done()
